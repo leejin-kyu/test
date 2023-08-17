@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>이해 체크</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 50px;
+  }
+  h2 {
+    margin-bottom: 20px;
+  }
+  button {
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+  }
+  #understood-count, #not-understood-count, #reset-button {
+    font-size: 18px;
+    margin-top: 20px;
+    display: block;
+  }
+</style>
+</head>
+<body>
+<h2>현재 내용을 잘 이해하셨나요?</h2>
+<p>아래에 체크해주세요.</p>
+<button onclick="recordUnderstanding(true)">이해함</button>
+<button onclick="recordUnderstanding(false)">이해 못함</button>
+<div id="understood-count">이해함: 0명</div>
+<div id="not-understood-count">이해못함: 0명</div>
+<button id="reset-button" onclick="resetCounts()">리셋</button>
+
+<script>
+  let understoodCount = 0;
+  let notUnderstoodCount = 0;
+
+  function updateCounts() {
+    document.getElementById('understood-count').textContent = `이해함: ${understoodCount}명`;
+    document.getElementById('not-understood-count').textContent = `이해못함: ${notUnderstoodCount}명`;
+  }
+
+  function recordUnderstanding(understood) {
+    if (understood) {
+      understoodCount++;
+    } else {
+      notUnderstoodCount++;
+    }
+    updateCounts();
+  }
+
+  function resetCounts() {
+    understoodCount = 0;
+    notUnderstoodCount = 0;
+    updateCounts();
+  }
+</script>
+</body>
+</html>
